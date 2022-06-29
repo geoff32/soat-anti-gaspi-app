@@ -1,0 +1,18 @@
+.card {
+  border: 1px solid gray;
+  margin: 1em;
+  border-radius: 0.2em;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.card .card-header {
+  background-color: rgba(0,0,0,0.4);
+  padding: 0.2em 1em;
+}
+
+.card .card-body {
+  background-color: rgba(0,0,0,0.1);
+  padding: 1em;
+}
