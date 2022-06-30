@@ -1,0 +1,39 @@
+name: Build React App
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install Yarn
+      run: npm install -g yarn
+
+    - name: Restore packages
+      run: yarn install
+
+    - name: Build
+      run: yarn build
+
+    - name: Tests
+      run: yarn test
+
+    - name: Uninstall Yarn
+      if: always()
+      run: npm uninstall -g yarn
