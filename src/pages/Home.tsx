@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Home: React.FC = () => {
-	useEffect(() => console.log("Home"), []);
-
 	return (
 		<>Accueil</>
 	)
