@@ -1,4 +1,5 @@
 import Annonce from "./models/Annonce";
+import config from "../config";
 
 interface AnnonceServicesProps {
   getAnnonces: () => Promise<Annonce[]>;
@@ -6,7 +7,7 @@ interface AnnonceServicesProps {
 
 const AnnonceServices: AnnonceServicesProps = {
   getAnnonces: async () => {
-    var response = await fetch(`api/annonces`);
+    var response = await fetch(`${config.API_URL}/annonces`);
     if (response.ok) {
       return await response.json();
     }
