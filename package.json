@@ -40,7 +40,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://localhost:7201",
   "devDependencies": {
     "@types/node": "^16.11.45"
   }
