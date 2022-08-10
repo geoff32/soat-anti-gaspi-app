@@ -5,5 +5,5 @@ interface Config {
     API_URL: string
 }
 
-const config: Config = (process.env.ENV === "dev") ? configDev : configProd;
+const config: Config = (process.env.NODE_ENV === "production") ? configProd : configDev;
 export default config;

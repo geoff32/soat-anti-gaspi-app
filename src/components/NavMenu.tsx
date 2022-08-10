@@ -9,7 +9,7 @@ const NavMenu: React.FC = () => (
         <span className="app-title"><Link to="/">Anti Gaspi</Link></span>
         <div className="menu-container d-flex">
           <ul className="menu">
-            <li className="menu-item"><Link to="/annonces">Annonces</Link></li>
+            <li className="menu-item"><Link to="/offers">Annonces</Link></li>
           </ul>
         </div>
       </div>

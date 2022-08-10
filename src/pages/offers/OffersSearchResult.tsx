@@ -2,9 +2,9 @@ import React from 'react';
 import Card from '../../components/Card';
 import CardBody from '../../components/CardBody';
 import CardHeader from '../../components/CardHeader';
-import Annonce from './models/Annonce';
+import Offer from './models/Offer';
 
-const AnnonceSearchResult: React.FC<Annonce> = ({ companyName, title, description, email, address }) => {
+const OffersSearchResult: React.FC<Offer> = ({ companyName, title, description, email, address }) => {
   return (
     <Card>
       <CardHeader>{companyName} - {title}</CardHeader>
@@ -16,4 +16,4 @@ const AnnonceSearchResult: React.FC<Annonce> = ({ companyName, title, descriptio
   )
 }
 
-export default AnnonceSearchResult;
+export default OffersSearchResult;
