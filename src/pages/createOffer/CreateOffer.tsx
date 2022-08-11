@@ -9,24 +9,26 @@ interface CreateOfferState {
   hasError: boolean;
 }
 
+const defaultCreateOfferRequest: CreateOfferRequest = {
+  title: "",
+  description: "",
+  email: "",
+  companyName: "",
+  address: "",
+  availability: undefined,
+  expiration: undefined,
+};
+
 const CreateOffer: React.FC = () => {
   const [{ isLoading, hasError }, setState] = useState<CreateOfferState>({
     isLoading: false,
-    hasError: false,
+    hasError: false
   });
 
   const [ offerId, setOfferId ] = useState<string>("");
 
   const [createOfferRequest, setCreateOfferRequest] =
-    useState<CreateOfferRequest>({
-      title: "",
-      description: "",
-      email: "",
-      companyName: "",
-      address: "",
-      availability: undefined,
-      expiration: undefined,
-    });
+    useState<CreateOfferRequest>(defaultCreateOfferRequest);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCreateOfferRequest({
@@ -45,6 +47,7 @@ const CreateOffer: React.FC = () => {
     try {
       const id = await OffersService.createOffer(createOfferRequest);
       setOfferId(id);
+      setCreateOfferRequest(defaultCreateOfferRequest);
     } catch (e: unknown) {
       setState({ isLoading: false, hasError: true });
     }
@@ -61,27 +64,32 @@ const CreateOffer: React.FC = () => {
               name="title" 
               label="Titre :"
               required
+              value={createOfferRequest.title}
               onChange={handleChange} />
             <Input 
               name="description" 
               label="Description :"
               required
+              value={createOfferRequest.description}
               onChange={handleChange} />
             <Input 
               name="email"
               type="email"
               label="Email :"
               required
+              value={createOfferRequest.email}
               onChange={handleChange} />
             <Input 
               name="companyName"
               label="Entreprise :"
               required
+              value={createOfferRequest.companyName}
               onChange={handleChange} />
             <Input 
               name="address"
               label="Adresse :"
               required
+              value={createOfferRequest.address}
               onChange={handleChange} />
             <Input 
               name="availability"
@@ -97,7 +105,7 @@ const CreateOffer: React.FC = () => {
           {isLoading && <Loading/>}
           {!isLoading && <Button type="submit">Créer</Button>}
           {hasError && <Error refresh={() => submitCreateOffer()}/>}
-          {offerId}
+          {offerId && <p>L'annonce {offerId} a bien été créée !</p>}
         </CardBody>
       </Card>
     </form>

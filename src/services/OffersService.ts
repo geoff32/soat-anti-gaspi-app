@@ -25,7 +25,7 @@ const OffersService: OffersServiceProps = {
       },
     });
 
-    const {id} = await response.json();
+    const id = await response.json();
     if (response.ok) {
       return id;
     }

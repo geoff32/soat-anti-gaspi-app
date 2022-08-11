@@ -34,6 +34,10 @@ const Offers: React.FC = () => {
     return <Loading />
   }
 
+  if (offers.length === 0) {
+    return <>Aucune annonce</>
+  }
+
   return (
     <Container>
       { offers.map(annonce => (<OffersSearchResult key={annonce.id} {...annonce} />)) }
