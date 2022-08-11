@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import Button from './Button/Button';
 
 interface ErrorProps extends React.HTMLAttributes<HTMLDivElement> {
     refresh: () => Promise<void>;

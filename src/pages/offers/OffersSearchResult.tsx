@@ -1,8 +1,6 @@
 import React from 'react';
-import Card from '../../components/Card';
-import CardBody from '../../components/CardBody';
-import CardHeader from '../../components/CardHeader';
-import Offer from './models/Offer';
+import { Card, CardBody, CardHeader } from '../../components';
+import { Offer } from '../../services/models';
 
 const OffersSearchResult: React.FC<Offer> = ({ companyName, title, description, email, address }) => {
   return (

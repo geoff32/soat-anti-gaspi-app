@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import OffersSearchResult from './offers/OffersSearchResult';
-import Offer from './offers/models/Offer';
-import Container from '../components/Container';
-import Error from '../components/Error';
-import Loading from '../components/Loading';
-import OffersService from '../services/OffersService';
+import OffersSearchResult from './OffersSearchResult';
+import OffersService from '../../services/OffersService';
+import { Offer } from '../../services/models';
+import { Container, Error, Loading } from '../../components';
 
 interface OffersState {
   offers: Offer[];

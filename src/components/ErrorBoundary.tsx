@@ -1,6 +1,5 @@
 import React, { ErrorInfo, ReactNode } from 'react';
-import Button from './Button';
-import Container from './Container';
+import { Button, Container } from '.';
 
 class ErrorBoundary extends React.PureComponent<{ children?: ReactNode }, { hasError: boolean }> {
   constructor(props: {}) {

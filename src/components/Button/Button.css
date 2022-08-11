@@ -9,9 +9,9 @@
   cursor: pointer;
   display: inline-block;
   font-family: din-round,sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: .8px;
+  letter-spacing: 0.5rem;
   line-height: 20px;
   margin: 0;
   outline: none;
@@ -24,9 +24,6 @@
   transition: filter .2s;
   user-select: none;
   -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  /* width: 100%; */
 }
 
 .button:after {
