@@ -38,14 +38,24 @@ const DeleteOffer: React.FC = () => {
     }
   };
 
+  const renderBody = () => {
+    if (isLoading)
+      return <Loading />;
+
+    if (!offerId)
+      return <>Page invalide</>;
+
+    if (hasError)
+      return <Error refresh={() => deleteOffer(offerId)}/>;
+
+    return <>Félicitations, votre annonce a bien été supprimée !</>
+  }
+
   return (
     <Card>
       <CardHeader></CardHeader>
       <CardBody>
-        {!offerId && <>Page invalide</>}
-        {isLoading && <Loading />}
-        {!isLoading && <>Félicitations, votre annonce a bien été supprimée !</>}
-        {hasError && <Error refresh={() => deleteOffer(offerId)}/>}
+        {renderBody()}
       </CardBody>
     </Card>
   );

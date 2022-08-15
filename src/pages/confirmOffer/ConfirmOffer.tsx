@@ -38,14 +38,24 @@ const CreateOffer: React.FC = () => {
     }
   };
 
+  const renderBody = () => {
+    if (isLoading)
+      return <Loading />;
+
+    if (!offerId)
+      return <>Page invalide</>;
+
+    if (hasError)
+      return <Error refresh={() => confirmOffer(offerId)}/>;
+
+    return <>Félicitations, votre annonce a bien été confirmée !</>
+  }
+
   return (
     <Card>
       <CardHeader></CardHeader>
       <CardBody>
-        {!offerId && <>Page invalide</>}
-        {isLoading && <Loading />}
-        {!isLoading && <>Félicitations, votre annonce a bien été confirmée !</>}
-        {hasError && <Error refresh={() => confirmOffer(offerId)}/>}
+        {renderBody()}
       </CardBody>
     </Card>
   );

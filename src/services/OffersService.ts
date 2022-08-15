@@ -51,7 +51,7 @@ const OffersService: OffersServiceProps = {
   },
 
   deleteOffer: async (offerId) => {
-    const response = await fetch(`${config.API_URL}/offers/${offerId}/delete`, { 
+    const response = await fetch(`${config.API_URL}/offers/${offerId}`, { 
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',
