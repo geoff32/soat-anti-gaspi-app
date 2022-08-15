@@ -5,6 +5,7 @@ interface OffersServiceProps {
   getOffers: () => Promise<GetOffersResponse>;
   createOffer: (createOfferRequest: CreateOfferRequest) => Promise<string>;
   confirmOffer: (offerId: string) => Promise<void>;
+  deleteOffer: (offerId: string) => Promise<void>;
 }
 
 const OffersService: OffersServiceProps = {
@@ -47,6 +48,21 @@ const OffersService: OffersServiceProps = {
     }
 
     throw new Error("Erreur lors de la confirmation d'annonce");
+  },
+
+  deleteOffer: async (offerId) => {
+    const response = await fetch(`${config.API_URL}/offers/${offerId}/delete`, { 
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      return;
+    }
+
+    throw new Error("Erreur lors de la suppression d'annonce");
   }
 }
 

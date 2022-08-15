@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import CreateOffer from "./pages/createOffer/CreateOffer";
 import { ErrorBoundary, Layout } from "./components";
 import ConfirmOffer from "./pages/confirmOffer/ConfirmOffer";
+import DeleteOffer from "./pages/deleteOffer/DeleteOffer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/offers" element={<Offers />} />
             <Route path="/createOffer" element={<CreateOffer />} />
             <Route path="/confirmOffer/:offerId" element={<ConfirmOffer />} />
+            <Route path="/deleteOffer/:offerId" element={<DeleteOffer />} />
           </Routes>
         </Layout>
       </Router>
