@@ -1,5 +1,4 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css";
 import Offers from "./pages/offers/Offers";
 import Home from "./pages/Home";
 import CreateOffer from "./pages/createOffer/CreateOffer";

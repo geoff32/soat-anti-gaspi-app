@@ -1,17 +1,31 @@
-import React from 'react';
-import { Card, CardBody, CardHeader } from '../../components';
-import { Offer } from '../../services/models';
+import React from "react";
+import { Button, Card, CardBody, CardHeader } from "../../components";
+import { Offer } from "../../services/models";
+import { useNavigate } from "react-router-dom";
 
-const OffersSearchResult: React.FC<Offer> = ({ companyName, title, description, email, address }) => {
+const OffersSearchResult: React.FC<Offer> = ({
+  id,
+  companyName,
+  title,
+  description,
+  address
+}) => {
+  const navigate = useNavigate();
+
   return (
     <Card>
-      <CardHeader>{companyName} - {title}</CardHeader>
+      <CardHeader>
+        {companyName} - {title}
+      </CardHeader>
       <CardBody>
-        <div>{description}</div>
-        <div>{address} - {email}</div>
+        <p>{description}</p>
+        <p>{address}</p>
+        <Button onClick={() => navigate(`/contact/${id}`)}>
+          Contacter
+        </Button>
       </CardBody>
     </Card>
-  )
-}
+  );
+};
 
 export default OffersSearchResult;
