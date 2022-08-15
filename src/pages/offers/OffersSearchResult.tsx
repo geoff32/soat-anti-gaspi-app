@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, CardBody, CardHeader } from "../../components";
 import { Offer } from "../../services/models";
 import { useNavigate } from "react-router-dom";
+import "./OffersSearchResult.css";
 
 const OffersSearchResult: React.FC<Offer> = ({
   id,

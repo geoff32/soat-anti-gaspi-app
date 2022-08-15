@@ -1,11 +1,13 @@
 import config from "../config";
 import { CreateOfferRequest, GetOffersResponse } from "../services/models";
+import ContactRequest from "./models/ContactRequest";
 
 interface OffersServiceProps {
   getOffers: () => Promise<GetOffersResponse>;
   createOffer: (createOfferRequest: CreateOfferRequest) => Promise<string>;
   confirmOffer: (offerId: string) => Promise<void>;
   deleteOffer: (offerId: string) => Promise<void>;
+  contact: (offerId: string, contact: ContactRequest) => Promise<string>;
 }
 
 const OffersService: OffersServiceProps = {
@@ -63,7 +65,24 @@ const OffersService: OffersServiceProps = {
     }
 
     throw new Error("Erreur lors de la suppression d'annonce");
-  }
+  },
+
+  contact: async (offerId, contactRequest) => {
+    const response = await fetch(`${config.API_URL}/offers/${offerId}/contact`, { 
+      method: 'post',
+      body: JSON.stringify(contactRequest),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const id = await response.json();
+    if (response.ok) {
+      return id;
+    }
+
+    throw new Error("Erreur lors de la prise de contact");
+  },
 }
 
 export default OffersService;
