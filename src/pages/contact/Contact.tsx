@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Card, CardBody, CardHeader, Error, Input, Loading } from "../../components";
-import { CreateOfferRequest } from "../../services/models";
 import ContactRequest from "../../services/models/ContactRequest";
 import OffersService from "../../services/OffersService";
 import './Contact.css';
@@ -39,13 +38,13 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitCreateOffer();
+    submitContact();
   };
 
-  const submitCreateOffer = async () => {
+  const submitContact = async () => {
     setState({ isLoading: true, hasError: false });
     try {
-      const id = await OffersService.contact(offerId ?? "", contactRequest);
+      await OffersService.contact(offerId ?? "", contactRequest);
       setContactRequest(defaultContactRequest);
     } catch (e: unknown) {
       setState({ isLoading: false, hasError: true });
@@ -58,7 +57,7 @@ const Contact: React.FC = () => {
         return <Loading/>;
 
     if (hasError)
-        return <Error refresh={() => submitCreateOffer()}/>;
+        return <Error refresh={() => submitContact()}/>;
 
     if (offerId)
         <p>L'annonce {offerId} a bien été créée !</p>;
