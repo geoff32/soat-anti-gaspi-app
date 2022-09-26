@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  AZURE_WEBAPP_NAME: 'app-soat-bc22-front-dev-fr'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,6 +37,30 @@ jobs:
     - name: Tests
       run: yarn test
 
-    - name: Uninstall Yarn
-      if: always()
-      run: npm uninstall -g yarn
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: app
+        path: build
+
+  deploy:
+    runs-on: ubuntu-latest    
+    needs: build
+
+    environment:
+      name: 'Development'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: app
+
+    - name: 'Deploy to Azure WebApp'
+      id: deploy-to-webapp 
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: '.'
