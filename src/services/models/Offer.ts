@@ -1,4 +1,4 @@
-export default interface Annonce {
+export default interface Offer {
   id: string;
   title: string;
   description: string;

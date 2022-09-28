@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home: React.FC = () => {
 	return (
-		<>Accueil</>
+		<>Bienvenue sur AntiGaspi !</>
 	)
 }
 
